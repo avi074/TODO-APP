@@ -5,7 +5,11 @@ export default withMT({
     "./index.html", "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow:{
+        '1px': '1px 1px 1px gray',
+      }
+    },
   },
   plugins: [],
 })
