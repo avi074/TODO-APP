@@ -1,8 +1,61 @@
-# React + Vite
+# [TODO APP]()
+This is my first React App. It's a simple ToDo List application that lets you create tasks, updates them & marks them as per user's input.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you start, ensure you have Node.js installed on your machine. If not, you can download and install it from [here](https://nodejs.org/).
+
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone 
+```
+
+2. Navigate into the project directory:
+
+```bash
+cd 
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+## Usage
+
+To start the project, open the Folder in IDE & run
+
+```bash
+npm run dev
+```
+
+To build your project for production:
+
+```bash
+npm run build
+```
+
+## Folder Structure
+
+- `public/` : Contains your public files.
+
+- `src/` : Contains your JSX/Source files 
+    - `assets/` : Assets
+    - `components/` : React Components
+    - `utils/` : Utilities
+
+- `index.html` : Index HTML file
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](LICENSE)
