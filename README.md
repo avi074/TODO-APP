@@ -12,13 +12,13 @@ Before you start, ensure you have Node.js installed on your machine. If not, you
 1. Clone the repository:
 
 ```bash
-git clone 
+git clone https://github.com/avi074/TODO-APP.git
 ```
 
 2. Navigate into the project directory:
 
 ```bash
-cd 
+cd TODO-APP
 ```
 
 3. Install dependencies:
