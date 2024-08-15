@@ -10,40 +10,32 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import addIcon from "../assets/add.svg";
 import { PRIORITY, PCOLOR } from "../utils/constants.js";
 
-function InputModal() {
-  const initialFormData = {
-    name: "",
-    desc: "",
-    priority: "0",
-    status: 0,
-  };
+/**
+ * Input Modal for updating ToDos
+ */
+function InputModal({ open, task, events: { handleDialog, updateTasks } }) {
   // State Vars
-  const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState(task);
 
-  const [formData, setFormData] = useState(initialFormData);
+  // updates the form data on every new task
+  useEffect(() => {
+    setFormData(task);
+  }, [task]);
 
-  const handleOpen = () => setOpen(!open);
-
+  /**
+   * Changes the specific value in FormData state variable
+   * @param {Event} e
+   */
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setFormData({
       ...formData,
       [name]: value,
     });
-  };
-
-  const updateTodos = () => {
-    console.log(formData);
-    resetDialog();
-  };
-
-  const resetDialog = () => {
-    setFormData(initialFormData);
-    handleOpen();
   };
 
   return (
@@ -55,14 +47,14 @@ function InputModal() {
         <Button
           color="white"
           variant="gradient"
-          onClick={handleOpen}
+          onClick={handleDialog}
           className="p-1"
           title="Add TODO">
           <img src={addIcon} alt="Add To-Do" className="w-8" />
         </Button>
       </header>
 
-      <Dialog open={open} handler={handleOpen}>
+      <Dialog open={open} handler={handleDialog}>
         <DialogHeader>Task Details</DialogHeader>
 
         <DialogBody className="flex flex-col gap-4">
@@ -84,7 +76,7 @@ function InputModal() {
           <Select
             label="Task Priority"
             value={formData.priority}
-            color={PCOLOR[formData.priority]}          
+            color={PCOLOR[formData.priority]}
             onChange={(e) => {
               setFormData({
                 ...formData,
@@ -93,7 +85,10 @@ function InputModal() {
             }}>
             {PRIORITY.map((pri, index) => (
               <Option key={index} value={`${index}`}>
-                <span className={`font-bold text-${PCOLOR[formData.priority]}-900`}>{pri}</span>
+                <span
+                  className={`font-bold text-${PCOLOR[formData.priority]}-900`}>
+                  {pri}
+                </span>
               </Option>
             ))}
           </Select>
@@ -103,11 +98,17 @@ function InputModal() {
           <Button
             variant="text"
             color="red"
-            onClick={resetDialog}
+            onClick={handleDialog}
             className="mr-1">
             <span>Cancel</span>
           </Button>
-          <Button variant="gradient" color="green" onClick={updateTodos}>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={() => {
+              updateTasks(formData);
+              handleDialog();
+            }}>
             <span>Submit</span>
           </Button>
         </DialogFooter>
